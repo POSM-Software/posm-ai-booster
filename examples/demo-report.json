@@ -1,0 +1,513 @@
+{
+  "prototype": "offline-gpu-job-router",
+  "version": "0.1.0",
+  "synthetic": true,
+  "notice": "Predictions from invented fixtures; no measured GPU results, network calls, cloud resources, or actual spending.",
+  "units": {
+    "latency": "milliseconds",
+    "payload": "decimal MB",
+    "bandwidth": "decimal Mbps",
+    "cost": "integer micro-USD"
+  },
+  "results": [
+    {
+      "job_id": "private-inference",
+      "synthetic": true,
+      "status": "simulated_success",
+      "attempts": [
+        {
+          "outcome": "simulated_success",
+          "decision": {
+            "job_id": "private-inference",
+            "status": "planned",
+            "reason": "Local route satisfies constraints",
+            "selected": {
+              "worker_id": "local-simulated",
+              "location": "local",
+              "latency_ms": 11000.0,
+              "cost_microusd": 0,
+              "queue_ms": 0,
+              "network_ms": 0.0,
+              "startup_ms": 0,
+              "compute_ms": 10000.0,
+              "padding_ms": 1000.0
+            },
+            "evaluations": [
+              {
+                "worker_id": "aws-gpu-simulated",
+                "eligible": false,
+                "reasons": [
+                  "privacy_requires_local",
+                  "remote_not_authorized"
+                ],
+                "estimate": null
+              },
+              {
+                "worker_id": "lan-gpu-simulated",
+                "eligible": false,
+                "reasons": [
+                  "privacy_requires_local",
+                  "remote_not_authorized"
+                ],
+                "estimate": null
+              },
+              {
+                "worker_id": "local-simulated",
+                "eligible": true,
+                "reasons": [],
+                "estimate": {
+                  "worker_id": "local-simulated",
+                  "location": "local",
+                  "latency_ms": 11000.0,
+                  "cost_microusd": 0,
+                  "queue_ms": 0,
+                  "network_ms": 0.0,
+                  "startup_ms": 0,
+                  "compute_ms": 10000.0,
+                  "padding_ms": 1000.0
+                }
+              }
+            ],
+            "synthetic": true
+          }
+        }
+      ],
+      "total_predicted_ms": 11000.0,
+      "total_cost_microusd": 0
+    },
+    {
+      "job_id": "authorized-remote",
+      "synthetic": true,
+      "status": "simulated_success",
+      "attempts": [
+        {
+          "outcome": "simulated_success",
+          "decision": {
+            "job_id": "authorized-remote",
+            "status": "planned",
+            "reason": "Authorized remote route exceeds the required latency saving",
+            "selected": {
+              "worker_id": "aws-gpu-simulated",
+              "location": "remote",
+              "latency_ms": 806.3,
+              "cost_microusd": 504,
+              "queue_ms": 0,
+              "network_ms": 133.0,
+              "startup_ms": 100,
+              "compute_ms": 500.0,
+              "padding_ms": 73.3
+            },
+            "evaluations": [
+              {
+                "worker_id": "aws-gpu-simulated",
+                "eligible": true,
+                "reasons": [],
+                "estimate": {
+                  "worker_id": "aws-gpu-simulated",
+                  "location": "remote",
+                  "latency_ms": 806.3,
+                  "cost_microusd": 504,
+                  "queue_ms": 0,
+                  "network_ms": 133.0,
+                  "startup_ms": 100,
+                  "compute_ms": 500.0,
+                  "padding_ms": 73.3
+                }
+              },
+              {
+                "worker_id": "lan-gpu-simulated",
+                "eligible": true,
+                "reasons": [],
+                "estimate": {
+                  "worker_id": "lan-gpu-simulated",
+                  "location": "remote",
+                  "latency_ms": 1390.1555555555556,
+                  "cost_microusd": 279,
+                  "queue_ms": 0,
+                  "network_ms": 13.777777777777779,
+                  "startup_ms": 0,
+                  "compute_ms": 1250.0,
+                  "padding_ms": 126.37777777777778
+                }
+              },
+              {
+                "worker_id": "local-simulated",
+                "eligible": true,
+                "reasons": [],
+                "estimate": {
+                  "worker_id": "local-simulated",
+                  "location": "local",
+                  "latency_ms": 11000.0,
+                  "cost_microusd": 0,
+                  "queue_ms": 0,
+                  "network_ms": 0.0,
+                  "startup_ms": 0,
+                  "compute_ms": 10000.0,
+                  "padding_ms": 1000.0
+                }
+              }
+            ],
+            "synthetic": true
+          }
+        }
+      ],
+      "total_predicted_ms": 806.3,
+      "total_cost_microusd": 504
+    },
+    {
+      "job_id": "transfer-heavy",
+      "synthetic": true,
+      "status": "simulated_success",
+      "attempts": [
+        {
+          "outcome": "simulated_success",
+          "decision": {
+            "job_id": "transfer-heavy",
+            "status": "planned",
+            "reason": "Local route satisfies constraints",
+            "selected": {
+              "worker_id": "local-simulated",
+              "location": "local",
+              "latency_ms": 11000.0,
+              "cost_microusd": 0,
+              "queue_ms": 0,
+              "network_ms": 0.0,
+              "startup_ms": 0,
+              "compute_ms": 10000.0,
+              "padding_ms": 1000.0
+            },
+            "evaluations": [
+              {
+                "worker_id": "aws-gpu-simulated",
+                "eligible": false,
+                "reasons": [
+                  "predicted_deadline_miss",
+                  "job_budget_exceeded",
+                  "session_budget_exceeded"
+                ],
+                "estimate": {
+                  "worker_id": "aws-gpu-simulated",
+                  "location": "remote",
+                  "latency_ms": 264718.3,
+                  "cost_microusd": 158851,
+                  "queue_ms": 0,
+                  "network_ms": 240053.0,
+                  "startup_ms": 100,
+                  "compute_ms": 500.0,
+                  "padding_ms": 24065.3
+                }
+              },
+              {
+                "worker_id": "lan-gpu-simulated",
+                "eligible": false,
+                "reasons": [
+                  "predicted_deadline_miss"
+                ],
+                "estimate": {
+                  "worker_id": "lan-gpu-simulated",
+                  "location": "remote",
+                  "latency_ms": 30713.71111111111,
+                  "cost_microusd": 6143,
+                  "queue_ms": 0,
+                  "network_ms": 26671.555555555555,
+                  "startup_ms": 0,
+                  "compute_ms": 1250.0,
+                  "padding_ms": 2792.1555555555556
+                }
+              },
+              {
+                "worker_id": "local-simulated",
+                "eligible": true,
+                "reasons": [],
+                "estimate": {
+                  "worker_id": "local-simulated",
+                  "location": "local",
+                  "latency_ms": 11000.0,
+                  "cost_microusd": 0,
+                  "queue_ms": 0,
+                  "network_ms": 0.0,
+                  "startup_ms": 0,
+                  "compute_ms": 10000.0,
+                  "padding_ms": 1000.0
+                }
+              }
+            ],
+            "synthetic": true
+          }
+        }
+      ],
+      "total_predicted_ms": 11000.0,
+      "total_cost_microusd": 0
+    },
+    {
+      "job_id": "budget-limited",
+      "synthetic": true,
+      "status": "simulated_success",
+      "attempts": [
+        {
+          "outcome": "simulated_success",
+          "decision": {
+            "job_id": "budget-limited",
+            "status": "planned",
+            "reason": "Local route satisfies constraints",
+            "selected": {
+              "worker_id": "local-simulated",
+              "location": "local",
+              "latency_ms": 11000.0,
+              "cost_microusd": 0,
+              "queue_ms": 0,
+              "network_ms": 0.0,
+              "startup_ms": 0,
+              "compute_ms": 10000.0,
+              "padding_ms": 1000.0
+            },
+            "evaluations": [
+              {
+                "worker_id": "aws-gpu-simulated",
+                "eligible": false,
+                "reasons": [
+                  "job_budget_exceeded"
+                ],
+                "estimate": {
+                  "worker_id": "aws-gpu-simulated",
+                  "location": "remote",
+                  "latency_ms": 806.3,
+                  "cost_microusd": 504,
+                  "queue_ms": 0,
+                  "network_ms": 133.0,
+                  "startup_ms": 100,
+                  "compute_ms": 500.0,
+                  "padding_ms": 73.3
+                }
+              },
+              {
+                "worker_id": "lan-gpu-simulated",
+                "eligible": false,
+                "reasons": [
+                  "job_budget_exceeded"
+                ],
+                "estimate": {
+                  "worker_id": "lan-gpu-simulated",
+                  "location": "remote",
+                  "latency_ms": 1390.1555555555556,
+                  "cost_microusd": 279,
+                  "queue_ms": 0,
+                  "network_ms": 13.777777777777779,
+                  "startup_ms": 0,
+                  "compute_ms": 1250.0,
+                  "padding_ms": 126.37777777777778
+                }
+              },
+              {
+                "worker_id": "local-simulated",
+                "eligible": true,
+                "reasons": [],
+                "estimate": {
+                  "worker_id": "local-simulated",
+                  "location": "local",
+                  "latency_ms": 11000.0,
+                  "cost_microusd": 0,
+                  "queue_ms": 0,
+                  "network_ms": 0.0,
+                  "startup_ms": 0,
+                  "compute_ms": 10000.0,
+                  "padding_ms": 1000.0
+                }
+              }
+            ],
+            "synthetic": true
+          }
+        }
+      ],
+      "total_predicted_ms": 11000.0,
+      "total_cost_microusd": 0
+    },
+    {
+      "job_id": "no-feasible-worker",
+      "synthetic": true,
+      "status": "rejected",
+      "attempts": [],
+      "last_decision": {
+        "job_id": "no-feasible-worker",
+        "status": "rejected",
+        "reason": "No worker satisfies every constraint",
+        "selected": null,
+        "evaluations": [
+          {
+            "worker_id": "aws-gpu-simulated",
+            "eligible": false,
+            "reasons": [
+              "privacy_requires_local",
+              "remote_not_authorized",
+              "insufficient_memory"
+            ],
+            "estimate": null
+          },
+          {
+            "worker_id": "lan-gpu-simulated",
+            "eligible": false,
+            "reasons": [
+              "privacy_requires_local",
+              "remote_not_authorized",
+              "insufficient_memory"
+            ],
+            "estimate": null
+          },
+          {
+            "worker_id": "local-simulated",
+            "eligible": false,
+            "reasons": [
+              "insufficient_memory"
+            ],
+            "estimate": null
+          }
+        ],
+        "synthetic": true
+      },
+      "total_predicted_ms": 0.0,
+      "total_cost_microusd": 0
+    },
+    {
+      "job_id": "remote-failure-local-fallback",
+      "synthetic": true,
+      "status": "simulated_success",
+      "attempts": [
+        {
+          "outcome": "simulated_failure",
+          "decision": {
+            "job_id": "remote-failure-local-fallback",
+            "status": "planned",
+            "reason": "Authorized remote route exceeds the required latency saving",
+            "selected": {
+              "worker_id": "aws-gpu-simulated",
+              "location": "remote",
+              "latency_ms": 806.3,
+              "cost_microusd": 504,
+              "queue_ms": 0,
+              "network_ms": 133.0,
+              "startup_ms": 100,
+              "compute_ms": 500.0,
+              "padding_ms": 73.3
+            },
+            "evaluations": [
+              {
+                "worker_id": "aws-gpu-simulated",
+                "eligible": true,
+                "reasons": [],
+                "estimate": {
+                  "worker_id": "aws-gpu-simulated",
+                  "location": "remote",
+                  "latency_ms": 806.3,
+                  "cost_microusd": 504,
+                  "queue_ms": 0,
+                  "network_ms": 133.0,
+                  "startup_ms": 100,
+                  "compute_ms": 500.0,
+                  "padding_ms": 73.3
+                }
+              },
+              {
+                "worker_id": "lan-gpu-simulated",
+                "eligible": true,
+                "reasons": [],
+                "estimate": {
+                  "worker_id": "lan-gpu-simulated",
+                  "location": "remote",
+                  "latency_ms": 1390.1555555555556,
+                  "cost_microusd": 279,
+                  "queue_ms": 0,
+                  "network_ms": 13.777777777777779,
+                  "startup_ms": 0,
+                  "compute_ms": 1250.0,
+                  "padding_ms": 126.37777777777778
+                }
+              },
+              {
+                "worker_id": "local-simulated",
+                "eligible": true,
+                "reasons": [],
+                "estimate": {
+                  "worker_id": "local-simulated",
+                  "location": "local",
+                  "latency_ms": 11000.0,
+                  "cost_microusd": 0,
+                  "queue_ms": 0,
+                  "network_ms": 0.0,
+                  "startup_ms": 0,
+                  "compute_ms": 10000.0,
+                  "padding_ms": 1000.0
+                }
+              }
+            ],
+            "synthetic": true
+          }
+        },
+        {
+          "outcome": "simulated_success",
+          "decision": {
+            "job_id": "remote-failure-local-fallback",
+            "status": "planned",
+            "reason": "Local route satisfies constraints",
+            "selected": {
+              "worker_id": "local-simulated",
+              "location": "local",
+              "latency_ms": 11000.0,
+              "cost_microusd": 0,
+              "queue_ms": 0,
+              "network_ms": 0.0,
+              "startup_ms": 0,
+              "compute_ms": 10000.0,
+              "padding_ms": 1000.0
+            },
+            "evaluations": [
+              {
+                "worker_id": "aws-gpu-simulated",
+                "eligible": false,
+                "reasons": [
+                  "excluded_after_failure",
+                  "privacy_requires_local",
+                  "remote_not_authorized"
+                ],
+                "estimate": null
+              },
+              {
+                "worker_id": "lan-gpu-simulated",
+                "eligible": false,
+                "reasons": [
+                  "privacy_requires_local",
+                  "remote_not_authorized"
+                ],
+                "estimate": null
+              },
+              {
+                "worker_id": "local-simulated",
+                "eligible": true,
+                "reasons": [],
+                "estimate": {
+                  "worker_id": "local-simulated",
+                  "location": "local",
+                  "latency_ms": 11000.0,
+                  "cost_microusd": 0,
+                  "queue_ms": 0,
+                  "network_ms": 0.0,
+                  "startup_ms": 0,
+                  "compute_ms": 10000.0,
+                  "padding_ms": 1000.0
+                }
+              }
+            ],
+            "synthetic": true
+          }
+        }
+      ],
+      "total_predicted_ms": 11806.3,
+      "total_cost_microusd": 504
+    }
+  ],
+  "ledger": {
+    "limit_microusd": 15000,
+    "spent_microusd": 1008,
+    "reserved_microusd": 0,
+    "available_microusd": 13992
+  }
+}
